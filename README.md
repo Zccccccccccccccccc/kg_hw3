@@ -1,1 +1,5 @@
 # kg_hw3
+spider.py用于爬取医疗文本数据
+extract.py用于测试不同temperature和prompt对大模型工具提取疾病结构化数据的影响
+test_neo4j_langchain.py用于调试Neo4j与大模型的接口，实现自然语言与Cypher语句的转化功能
+test_tugraph_langchain.py用于调试tugraph与大模型的接口，在TuGraph平台的图数据库上接入大模型Cypher语句的生成
