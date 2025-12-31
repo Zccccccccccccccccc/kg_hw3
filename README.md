@@ -1,2 +1,44 @@
-kg_hw3: 医疗知识图谱构建与问答系统这是一个基于大模型（LLM）与图数据库（TuGraph/Neo4j）构建的医疗知识图谱项目。本项目涵盖了从数据爬取、信息提取到自然语言转查询语句（Text-to-Cypher）的完整流程。🛠 文件说明本项目主要包含以下核心脚本：文件名功能描述spider.py数据爬取：负责从网络中抓取原始的医疗文本数据，为构建图谱提供基础语料。extract.py信息提取测试：用于测试大模型在不同 temperature 参数和 prompt 模板下对疾病结构化数据提取的准确性与稳定性。test_neo4j_langchain.pyNeo4j 接口调试：基于 LangChain 调试 Neo4j 与大模型的接口，实现自然语言到 Cypher 语句的转化功能。test_tugraph_langchain.pyTuGraph 接口调试：在 TuGraph 平台图数据库上接入大模型生成的 Cypher 语句，实现图谱的智能查询。🚀 技术栈图数据库: TuGraph (高性能)、Neo4j大模型框架: LangChain大模型引擎: 硅基流动 (SiliconFlow) / 通义千问 (Qwen)开发语言: Python 3.x核心协议: Bolt (用于图数据库连接)📖 核心功能流程数据准备：通过 spider.py 获取医疗文本。结构化处理：利用 extract.py 优化 Prompt，将非结构化文本转化为节点与关系数据。数据导入：将清洗后的数据导入 TuGraph 或 Neo4j。智能问答：通过 test_tugraph_langchain.py 实现用户自然语言提问 -> LLM 生成 Cypher -> 数据库查询 -> 返回答案。🔧 环境配置在运行项目前，请确保安装以下依赖：pip install pandas neo4j langchain langchain-openai requests
-并配置好您的 API Key 与图数据库连接信息。
+# **kg\_hw3: 医疗知识图谱构建与大模型集成测试**
+
+本项目是一个关于医疗知识图谱（Knowledge Graph）构建与问答（QA）的实验性工程。主要涵盖了从数据爬取、结构化提取到大模型（LLM）驱动的 Text-to-Cypher 转换等核心环节，并在 Neo4j 和 TuGraph 两个图数据库平台上进行了适配调试。
+
+## **📁 文件功能说明**
+
+| 文件名 | 功能描述 |
+| :---- | :---- |
+| **spider.py** | **医疗数据爬取**：用于从指定网站或接口爬取原始的医疗文本数据，为图谱构建提供语料支撑。 |
+| **extract.py** | **结构化数据提取测试**：用于测试大模型在不同 temperature 和 prompt 策略下，提取疾病结构化数据的准确度与稳定性。 |
+| **test\_neo4j\_langchain.py** | **Neo4j 接口调试**：基于 LangChain 框架调试 Neo4j 与大模型的连接，实现从自然语言到 Cypher 语句的转化。 |
+| **test\_tugraph\_langchain.py** | **TuGraph 接口调试**：在 TuGraph 平台图数据库上接入大模型，实现针对 TuGraph 语法的 Cypher 语句生成与查询。 |
+
+## **🛠️ 技术栈**
+
+* **大模型驱动**: [SiliconFlow (硅基流动)](https://siliconflow.cn/) / 通义千问 (Qwen)  
+* **开发框架**: [LangChain](https://github.com/langchain-ai/langchain) / [Kor](https://github.com/eyurtsev/kor)  
+* **图数据库**: [TuGraph](https://github.com/TuGraph-family/tugraph-db) & [Neo4j](https://neo4j.com/)  
+* **编程语言**: Python 3.9+  
+* **数据处理**: Pandas
+
+## **📝 核心实验内容**
+
+1. **Prompt 工程优化**：通过 extract.py 探索最优的提示词模板，减少大模型在医疗实体识别时的幻觉。  
+2. **多数据库适配**：分别针对 Neo4j 和 TuGraph 两种主流图数据库的查询协议进行大模型接口封装。  
+3. **自然语言交互**：通过 Text-to-Cypher 技术，使用户能够通过自然语言直接查询图数据库中的医疗事实。
+
+## **🚀 快速开始**
+
+### **1\. 安装依赖**
+
+pip install pandas neo4j langchain langchain-openai requests kor
+
+### **2\. 配置环境**
+
+在使用 test\_\*.py 脚本前，请确保在脚本中配置了正确的：
+
+* 图数据库连接地址 (Bolt URI)  
+* 数据库账号与密码  
+* 大模型 API Key 及 Base URL
+
+## **🤝 贡献与反馈**
+
+本项目为 kg\_hw3 作业/实验内容，如有疑问请通过 Issue 或邮件联系。
