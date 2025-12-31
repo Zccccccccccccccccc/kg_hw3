@@ -1,5 +1,2 @@
-# kg_hw3
-spider.py用于爬取医疗文本数据/n
-extract.py用于测试不同temperature和prompt对大模型工具提取疾病结构化数据的影响/n
-test_neo4j_langchain.py用于调试Neo4j与大模型的接口，实现自然语言与Cypher语句的转化功能/n
-test_tugraph_langchain.py用于调试tugraph与大模型的接口，在TuGraph平台的图数据库上接入大模型Cypher语句的生成
+kg_hw3: 医疗知识图谱构建与问答系统这是一个基于大模型（LLM）与图数据库（TuGraph/Neo4j）构建的医疗知识图谱项目。本项目涵盖了从数据爬取、信息提取到自然语言转查询语句（Text-to-Cypher）的完整流程。🛠 文件说明本项目主要包含以下核心脚本：文件名功能描述spider.py数据爬取：负责从网络中抓取原始的医疗文本数据，为构建图谱提供基础语料。extract.py信息提取测试：用于测试大模型在不同 temperature 参数和 prompt 模板下对疾病结构化数据提取的准确性与稳定性。test_neo4j_langchain.pyNeo4j 接口调试：基于 LangChain 调试 Neo4j 与大模型的接口，实现自然语言到 Cypher 语句的转化功能。test_tugraph_langchain.pyTuGraph 接口调试：在 TuGraph 平台图数据库上接入大模型生成的 Cypher 语句，实现图谱的智能查询。🚀 技术栈图数据库: TuGraph (高性能)、Neo4j大模型框架: LangChain大模型引擎: 硅基流动 (SiliconFlow) / 通义千问 (Qwen)开发语言: Python 3.x核心协议: Bolt (用于图数据库连接)📖 核心功能流程数据准备：通过 spider.py 获取医疗文本。结构化处理：利用 extract.py 优化 Prompt，将非结构化文本转化为节点与关系数据。数据导入：将清洗后的数据导入 TuGraph 或 Neo4j。智能问答：通过 test_tugraph_langchain.py 实现用户自然语言提问 -> LLM 生成 Cypher -> 数据库查询 -> 返回答案。🔧 环境配置在运行项目前，请确保安装以下依赖：pip install pandas neo4j langchain langchain-openai requests
+并配置好您的 API Key 与图数据库连接信息。
